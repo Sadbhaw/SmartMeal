@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "SmartMeal",
+    "slug": "smartmeal",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      "expo-status-bar"
+    ]
+  }
+}

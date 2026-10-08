@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: smartmeal-db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-smartmeal}
+      POSTGRES_USER: ${DB_USER:-smartmeal}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-smartmeal_dev}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - smartmeal_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-smartmeal}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  smartmeal_db_data:
+    driver: local
