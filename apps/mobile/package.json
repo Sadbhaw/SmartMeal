@@ -9,9 +9,11 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build": "tsc",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "tsx --test src/**/*.test.ts"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "9.1.0",
     "axios": "^1.20.0",
     "expo": "^57.0.0",
     "expo-secure-store": "^57.0.4",
@@ -23,6 +25,7 @@
     "@types/node": "^20.19.43",
     "@types/react": "~19.2.4",
     "@types/react-native": "^0.73.0",
+    "tsx": "^4.7.0",
     "typescript": "~6.0.3"
   }
 }

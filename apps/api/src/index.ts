@@ -7,6 +7,8 @@ import { authRoutes } from "./authRoutes.js";
 import { profileRoutes } from "./profileRoutes.js";
 import { foodRoutes } from "./foodRoutes.js";
 import { mealRoutes } from "./mealRoutes.js";
+import { groceryRoutes } from "./groceryRoutes.js";
+import { shoppingListRoutes } from "./shoppingListRoutes.js";
 
 const getEnv = (key: string, defaultVal?: string): string => {
   const val = process.env[key];
@@ -94,6 +96,8 @@ const start = async () => {
 
     // Register meal routes
     mealRoutes(fastify, pool);
+  groceryRoutes(fastify, pool);
+  shoppingListRoutes(fastify, pool);
 
     await fastify.listen({ host: HOST, port: PORT });
     console.log(`✓ API running at http://${HOST}:${PORT}`);

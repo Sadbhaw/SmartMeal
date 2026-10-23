@@ -236,12 +236,16 @@ export const ProfileDisplayScreen: React.FC<{
   onLogout: () => void
   onOpenFoodSearch: () => void
   onOpenMealTracking: () => void
+  onOpenInventory: () => void
+  onOpenShoppingList: () => void
 }> = ({
   profile,
   onEdit,
   onLogout,
   onOpenFoodSearch,
   onOpenMealTracking,
+  onOpenInventory,
+  onOpenShoppingList,
 }) => {
   const formatNumber = (num: number) => Math.round(num);
 
@@ -320,6 +324,12 @@ export const ProfileDisplayScreen: React.FC<{
         </TouchableOpacity>
         <TouchableOpacity style={styles.searchButton} onPress={onOpenFoodSearch}>
           <Text style={styles.buttonText}>Search Foods</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.inventoryButton} onPress={onOpenInventory}>
+          <Text style={styles.buttonText}>Inventory</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.shoppingListButton} onPress={onOpenShoppingList}>
+          <Text style={styles.buttonText}>Shopping List</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.editButton} onPress={onEdit}>
           <Text style={styles.buttonText}>Edit Profile</Text>
@@ -538,6 +548,18 @@ const styles = StyleSheet.create({
   },
   searchButton: {
     backgroundColor: "#5856D6",
+    borderRadius: 8,
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  inventoryButton: {
+    backgroundColor: "#007AFF",
+    borderRadius: 8,
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  shoppingListButton: {
+    backgroundColor: "#34C759",
     borderRadius: 8,
     paddingVertical: 14,
     alignItems: "center",

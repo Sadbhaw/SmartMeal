@@ -6,10 +6,12 @@ import { LoginScreen, RegisterScreen } from "./AuthScreens";
 import { ProfileFormScreen, ProfileDisplayScreen } from "./ProfileScreens";
 import { FoodSearchScreen, FoodDetailScreen } from "./FoodScreens";
 import { MealTrackingScreen } from "./MealScreens";
+import { InventoryScreen } from "./InventoryScreen";
+import { ShoppingListScreen } from "./ShoppingListScreen";
 import { profileClient, ProfileData } from "./profileClient";
 import { Food } from "./foodClient";
 
-type Screen = "profile-form" | "profile-display" | "food-search" | "food-detail" | "meal-tracking";
+type Screen = "profile-form" | "profile-display" | "food-search" | "food-detail" | "meal-tracking" | "inventory" | "shopping-list";
 
 const MainFlow: React.FC = () => {
   const { userEmail, logout, isLoading: authLoading } = useAuth();
@@ -91,6 +93,22 @@ const MainFlow: React.FC = () => {
     setCurrentScreen("profile-display");
   };
 
+  const handleOpenInventory = () => {
+    setCurrentScreen("inventory");
+  };
+
+  const handleBackFromInventory = () => {
+    setCurrentScreen("profile-display");
+  };
+
+  const handleOpenShoppingList = () => {
+    setCurrentScreen("shopping-list");
+  };
+
+  const handleBackFromShoppingList = () => {
+    setCurrentScreen("profile-display");
+  };
+
   if (authLoading || isLoading) {
     return (
       <View style={styles.container}>
@@ -114,6 +132,14 @@ const MainFlow: React.FC = () => {
         onBack={handleBackFromMealTracking}
       />
     );
+  }
+
+  if (currentScreen === "inventory") {
+    return <InventoryScreen onBack={handleBackFromInventory} />;
+  }
+
+  if (currentScreen === "shopping-list") {
+    return <ShoppingListScreen onBack={handleBackFromShoppingList} />;
   }
 
   if (currentScreen === "food-search") {
@@ -149,6 +175,8 @@ const MainFlow: React.FC = () => {
       onLogout={handleLogout}
       onOpenFoodSearch={handleOpenFoodSearch}
       onOpenMealTracking={handleOpenMealTracking}
+      onOpenInventory={handleOpenInventory}
+      onOpenShoppingList={handleOpenShoppingList}
     />
   );
 };
